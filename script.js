@@ -119,20 +119,33 @@ function getHumanChoice(){
 
     const playRock = document.getElementById("rock");
     playRock.addEventListener('click', () => {
-        const p = "Rock";
-        playRound(p, getComputerChoice());
+        if(humanScore == 3 || computerScore == 3){
+            alert("Click Clear for new game")
+        }else{
+            const p = "Rock";
+            playRound(p, getComputerChoice());
+        }
+        
     });
     
     const playPaper = document.getElementById("paper");
     playPaper.addEventListener('click', () => {
-        const p = "Paper";
-        playRound(p, getComputerChoice());
+        if(humanScore == 3 || computerScore == 3){
+            alert("Click Clear for new game")
+        }else{
+            const p = "Paper";
+            playRound(p, getComputerChoice());
+        }
     });
     
     const playSciccors = document.getElementById("sciccors");
     playSciccors.addEventListener('click', () => {
-        const p = "Sciccors";
-        playRound(p, getComputerChoice());
+        if(humanScore == 3 || computerScore == 3){
+            alert("Click Clear for new game")
+        }else{
+            const p = "Sciccors";
+            playRound(p, getComputerChoice());
+        }
     });
 
     function pointsToHuman(){
