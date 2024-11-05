@@ -1,0 +1,10 @@
+.results{
+    border:solid 1px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.player{
+    background-color:lightgreen;
+}

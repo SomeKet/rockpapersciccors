@@ -39,28 +39,25 @@ function getHumanChoice(){
 
         if(humanChoice === computerChoice){
             alert("Draw");
-
         }else if(humanChoice === "Paper" && computerChoice === "Rock"){
-           
-            alert(humanWins(humanChoice, computerChoice));
-            alert("Punkt für dich");
+            humanWins();
+            pointsToHuman();
         }else if(humanChoice === "Rock" && computerChoice === "Paper"){
-            alert(computerWins(humanChoice, computerChoice));
-            alert("Punkt für Computer");
-
+            computerWins();
+            pointsToCom();
         }else if(humanChoice === "Sciccors" && computerChoice === "Paper"){
-            alert(humanWins(humanChoice, computerChoice));
-            alert("Punkt für dich");
+            humanWins();
+            pointsToHuman();
         }else if(humanChoice === "Paper" && computerChoice === "Sciccors"){
-            alert(computerWins(humanChoice, computerChoice));
-            alert("Punkt für Computer");
+            computerWins();
+            pointsToCom();
 
         }else if(humanChoice === "Rock" && computerChoice === "Sciccors"){
-            alert(humanWins(humanChoice, computerChoice));
-            alert("Punkt für dich");
+            humanWins();
+            pointsToHuman();
         }else{
-            alert(computerWins(humanChoice, computerChoice));
-            alert("Punkt für Computer");
+            computerWins();
+            pointsToCom();
         }
     }
 
@@ -84,20 +81,88 @@ function getHumanChoice(){
          "Computer gewinnt mit " + computerScore + ":" + humanScore; 
     }
 
-    function deleteScores(){
-        computerScore=0;
-        humanScore=0;
+    function play5(){
+    
+        while(humanScore <5 && computerScore <5){
+            playRound(getHumanChoice(), getComputerChoice());
+        }
+        let human = humanScore;
+        let com = computerScore;
+        deleteScores();
+        return human > com ?
+         "Du gewinnst mit " + human + ":" +com :
+         "Computer gewinnt mit " + com + ":" + human; 
     }
+
 
     function humanWins(humanChoice, computerChoice){
         humanScore +=1;
-        return humanChoice +" schlägt "+computerChoice;
+        console.log(humanScore);
+        if(humanScore == 3){
+            alert("You Won the Game")
+        }else{
+            return "You = " + humanChoice +" beat "+ "Computer = " + computerChoice;
+        }
     }
 
     
     function computerWins(humanChoice, computerChoice){
         computerScore +=1;
-        return computerChoice +" schlägt "+humanChoice;
+        console.log(computerScore);
+        if(computerScore == 3){
+            alert("Computer Won the Game");
+        }else{
+            return "Computer = " + computerChoice +" beats "+ "You = " +humanChoice;
+        }
     }
 
+
+    const playRock = document.getElementById("rock");
+    playRock.addEventListener('click', () => {
+        const p = "Rock";
+        playRound(p, getComputerChoice());
+    });
+    
+    const playPaper = document.getElementById("paper");
+    playPaper.addEventListener('click', () => {
+        const p = "Paper";
+        playRound(p, getComputerChoice());
+    });
+    
+    const playSciccors = document.getElementById("sciccors");
+    playSciccors.addEventListener('click', () => {
+        const p = "Sciccors";
+        playRound(p, getComputerChoice());
+    });
+
+    function pointsToHuman(){
+        const result = document.createElement("p");
+            result.classList.add("result-label");
+            result.textContent = "X"
+        const element = document.getElementById("human");
+        element.appendChild(result);
+    }
+    function pointsToCom(){
+        const result = document.createElement("p");
+            result.classList.add("result-label");
+            result.textContent = "X"
+        const element = document.getElementById("computer");
+        element.appendChild(result);
+    }
+
+    const clearBtn = document.getElementById("clear");
+    clearBtn.addEventListener("click", () => {
+        humanScore = 0;
+        computerScore = 0;
+        const human = document.getElementById("human");
+        const com = document.getElementById("computer");
+        
+        //Entferne alle zusätzlich angehefteten "result-label"
+        const removeLabelHuman = human.querySelectorAll(".result-label");
+        const removeLabelCom = com.querySelectorAll(".result-label");
+
+        removeLabelHuman.forEach(label => label.remove());
+        removeLabelCom.forEach(label => label.remove());
+    
+    })
     

@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
     <title>RockPapaerSciccors</title>
 </head>
 <body>
-    <script src="./script.js"></script>
+   <div class="gameplay" id="gameplayId">
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="sciccors">Sciccors</button>
+    <button id="clear">Clear</button>
+   </div>
+   <div class="results">
+    <div id="humanResults">
+        <label for="human" class="player" id="human">You</label>
+    </div>
+    <div id="computerResults">
+        <label for="computer" class="player" id="computer">Computer</label>
+    </div>
+   </div>
     
 </body>
 </html>
